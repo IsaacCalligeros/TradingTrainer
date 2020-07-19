@@ -14,6 +14,6 @@ jobs:
             - name: Print current directory
               run: ls
             - name: Check dotnet cli
-              run: dotnet
+              run: dotnet build
             - name: Check npm cli
-              run: npm
+              run: npm -v
