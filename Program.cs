@@ -21,6 +21,8 @@ namespace TradingTrainer
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                    
                 });
+                
     }
 }

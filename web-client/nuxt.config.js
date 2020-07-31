@@ -37,6 +37,7 @@ export default {
   ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
+    { src: '@/plugins/vue-draggable-resizable.js', ssr: false  }
   ],
   /*
   ** Auto import components
@@ -87,5 +88,10 @@ export default {
   ** See https://nuxtjs.org/api/configuration-build/
   */
   build: {
+
+    extend (config, ctx) {
+      
+    },
+    transpile: ['vue-draggable-resizable']
   }
 }

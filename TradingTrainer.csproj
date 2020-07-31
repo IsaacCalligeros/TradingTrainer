@@ -1,8 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
-
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>c2cc9158-c56f-4608-8d03-1042f9ac3b8e</UserSecretsId>
   </PropertyGroup>
-
-
+  <ItemGroup>
+    <PackageReference Include="ThreeFourteen.Finnhub.Client" Version="1.2.0"/>
+  </ItemGroup>
 </Project>
