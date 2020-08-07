@@ -6,6 +6,7 @@ export default {
   ** See https://nuxtjs.org/api/configuration-mode
   */
   mode: 'universal',
+  
   /*
   ** Nuxt target
   ** See https://nuxtjs.org/api/configuration-target
@@ -37,7 +38,9 @@ export default {
   ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
-    { src: '@/plugins/vue-draggable-resizable.js', ssr: false  }
+    { src: '@/plugins/vue-draggable-resizable.js', ssr: false  },
+    { src: '@/plugins/user-details.js', ssr: true },
+    { src: '@/plugins/helpers.js', ssr: true }
   ],
   /*
   ** Auto import components
@@ -92,6 +95,6 @@ export default {
     extend (config, ctx) {
       
     },
-    transpile: ['vue-draggable-resizable']
+    transpile: ['vue-draggable-resizable', 'user-details', 'helpers']
   }
 }

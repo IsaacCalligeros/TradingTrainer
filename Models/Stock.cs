@@ -1,4 +1,4 @@
-namespace TradingTrainer.Models
+namespace Youkozi.Models
 {
     public class Stock
     {

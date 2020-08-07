@@ -3,7 +3,7 @@
     <v-app-bar :clipped-left="clipped" fixed app>
       <v-spacer />
       <v-btn icon @click="edit = !edit">
-        <v-icon>mdi-puzzle-edit-outline</v-icon>
+        <v-icon @click.stop="flipEdit">mdi-puzzle-edit-outline</v-icon>
       </v-btn>
       <v-btn icon @click.stop="rightDrawer = !rightDrawer">
         <v-icon>mdi-menu</v-icon>
@@ -18,9 +18,7 @@
       <v-list>
         <v-list-item @click.native="right = !right">
           <v-list-item-action>
-            <v-icon light>
-              mdi-repeat
-            </v-icon>
+            <v-icon light>mdi-repeat</v-icon>
           </v-list-item-action>
           <v-list-item-title></v-list-item-title>
         </v-list-item>
@@ -33,6 +31,8 @@
 </template>
 
 <script>
+import { mapState, mapActions, mapGetters } from "vuex";
+
 export default {
   data() {
     return {
@@ -41,8 +41,18 @@ export default {
       right: true,
       rightDrawer: false,
       edit: false,
-      title: "Vuetify.js"
+      title: "Vuetify.js",
     };
-  }
+  },
+  computed: {
+    ...mapGetters(["editMode"]),
+  },
+  methods: {
+    ...mapActions(["flipEditMode"]),
+    flipEdit() {
+      console.dir(this.editMode);
+      this.flipEditMode();
+    },
+  },
 };
 </script>

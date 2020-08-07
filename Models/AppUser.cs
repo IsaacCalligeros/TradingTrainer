@@ -3,9 +3,9 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.AspNetCore.Identity;
 
-namespace TradingTrainer.Models
+namespace Youkozi.Models
 {
-    public class User : IdentityUser<int>
+    public class AppUser : IdentityUser<int>
     {
         [NotMapped]
         public int UserId {

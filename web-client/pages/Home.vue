@@ -1,9 +1,9 @@
 <template>
   <div id="Home">
-    Home
     <div class="draggable-container">
-      <drag-container :sizeLoc=sizeLoc></drag-container>
-      <drag-container></drag-container>
+      <drag-container :sizeLoc=sizeLoc :control=Stocks></drag-container>
+      <drag-container :sizeLoc=sizeLoc2 :control=Weather></drag-container>
+      
     </div>
   </div>
 </template>
@@ -15,9 +15,17 @@ export default {
       sizeLoc: {
         x: 200,
         y: 200,
-        width: 300,
-        height: 200
-      }
+        w: 300,
+        h: 200
+      },
+      sizeLoc2: {
+        x: 500,
+        y: 500,
+        w: 300,
+        h: 200
+      },
+      Weather: "Weather",
+      Stocks: "Stocks"
     };
   },
   computed: {},
@@ -27,8 +35,10 @@ export default {
 
 <style lang="scss" scoped>
 .draggable-container {
-  height: 1000px;
-  width: 1000px;
+  position: absolute;
+top: 0px;
+bottom: 0px;
+width: 100%;
   border: 1px solid red;
 }
 </style>

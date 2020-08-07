@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "TradingTrainer": {
+    "Youkozi": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "home",
