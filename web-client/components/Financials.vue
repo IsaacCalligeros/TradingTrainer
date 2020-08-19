@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>Stocks yooooot</p>
+    {{editMode}}
   </div>
 </template>
 <script>
@@ -13,6 +13,9 @@ export default {
     };
   },
   created() {
+
+  },
+  mounted () {
 
   },
   computed: {

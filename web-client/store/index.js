@@ -28,7 +28,6 @@ export const mutations = {
 export const actions = {
   async nuxtServerInit({ commit }) {
     const message = await this.$axios.$get("http://localhost:5000/api/home");
-    console.log(message);
     commit("setMessage", message);
   },
   async flipEditMode({ commit }) {

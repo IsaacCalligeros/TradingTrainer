@@ -1,44 +1,54 @@
 <template>
   <div id="Home">
-    <div class="draggable-container">
-      <drag-container :sizeLoc=sizeLoc :control=Stocks></drag-container>
-      <drag-container :sizeLoc=sizeLoc2 :control=Weather></drag-container>
-      
+    <div id="dragContainer" class="draggable-container">
+      <template v-for="item in draggableContainers">
+        <drag-container :key="item.control" :sizeLoc="item.sizeLoc" :control="item.control"></drag-container>
+      </template>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState, mapActions, mapGetters } from "vuex";
+
 export default {
-  data: function() {
+  data: function () {
     return {
-      sizeLoc: {
-        x: 200,
-        y: 200,
-        w: 300,
-        h: 200
-      },
-      sizeLoc2: {
-        x: 500,
-        y: 500,
-        w: 300,
-        h: 200
-      },
-      Weather: "Weather",
-      Stocks: "Stocks"
+      draggableContainers: [
+        {
+          control: "Weather",
+          sizeLoc: {
+            x: 200,
+            y: 200,
+            w: 300,
+            h: 200,
+          },
+        },
+        {
+          control: "Financials",
+          sizeLoc: {
+            x: 500,
+            y: 500,
+            w: 300,
+            h: 200,
+          },
+        },
+      ],
     };
   },
-  computed: {},
-  methods: {}
+  computed: {
+    ...mapGetters("activeContainers", ["resizableContainers"]),
+  },
+  methods: {},
 };
 </script>
 
 <style lang="scss" scoped>
 .draggable-container {
   position: absolute;
-top: 0px;
-bottom: 0px;
-width: 100%;
-  border: 1px solid red;
+  top: 0px;
+  bottom: 0px;
+  width: 100%;
+  left: 0px;
 }
 </style>

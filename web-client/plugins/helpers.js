@@ -16,7 +16,6 @@ export function getTime(dateText) {
 }
 
 function tConvert (time) {
-    console.dir(time);
     // Check correct time format and split into components
     time = time.toString ().match (/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
   

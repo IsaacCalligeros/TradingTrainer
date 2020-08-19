@@ -1,23 +1,21 @@
 ﻿<Properties StartupConfiguration="{3A5252B6-7B29-435F-BCDC-4CC559D36796}|Default">
-  <MonoDevelop.Ide.ItemProperties.Youkozi PreferredExecutionTarget="/Applications/Firefox.app" />
-  <MonoDevelop.Ide.ItemProperties.Data FirstBuild="True" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="services/News/NewsApiClient.cs">
     <Files>
       <File FileName="Dtos/Stocks/StocksData.cs" Line="13" Column="40" />
-      <File FileName="Controllers/StocksController.cs" Line="34" Column="42" />
-      <File FileName="Program.cs" Line="16" Column="1" />
+      <File FileName="Controllers/StocksController.cs" />
+      <File FileName="Program.cs" Line="10" Column="18" />
+      <File FileName="Startup.cs" Line="35" Column="67" />
+      <File FileName="services/ServiceBaseHelper.cs" />
+      <File FileName="services/Financial/FinancialService.cs" />
+      <File FileName="services/Financial/IFinancialService.cs" />
+      <File FileName="services/News/NewsApiClient.cs" Line="14" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Youkozi" expanded="True">
-            <Node name="Youkozi" expanded="True">
-              <Node name="Controllers" expanded="True" />
-              <Node name="Dtos" expanded="True">
-                <Node name="Stocks" expanded="True" />
-                <Node name="Weather" expanded="True" />
-              </Node>
-              <Node name="Program.cs" selected="True" />
+            <Node name="Youkozi.Api" expanded="True">
+              <Node name="services" expanded="True" />
             </Node>
           </Node>
         </State>
@@ -29,11 +27,11 @@
     <String>YouKozi.Data/Youkozi.Data.csproj</String>
   </DisabledProjects>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Youkozi.Data FirstBuild="True" />
+  <MonoDevelop.Ide.ItemProperties.Youkozi.Api PreferredExecutionTarget="/Applications/Firefox.app" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
       <Breakpoint file="/Users/danarkun/Desktop/Isaac/Youkozi/Helpers/HttpFinnHubClient.cs" relfile="Helpers/HttpFinnHubClient.cs" line="15" column="1" />
-      <Breakpoint file="/Users/danarkun/Desktop/Isaac/Youkozi/Controllers/StocksController.cs" relfile="Controllers/StocksController.cs" line="37" column="1" />
+      <Breakpoint file="/Users/danarkun/Desktop/Isaac/Youkozi/Controllers/StocksController.cs" relfile="Controllers/StocksController.cs" line="32" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />

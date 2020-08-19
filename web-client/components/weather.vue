@@ -8,15 +8,28 @@
     <v-icon size="35">mdi-weather-windy-variant</v-icon>
     <v-icon size="35">mdi-weather-windy</v-icon>-->
     <div v-if="!editMode">
-      <p>{{city}} - {{Time}}</p>
-      <div v-if="weatherDetails !== null">
-        Temperature: {{weatherDetails.currentWeather.dayTempDetail.temp}}
-        Max: {{weatherDetails.currentWeather.dayTempDetail.tempMax}}
-        Min: {{weatherDetails.currentWeather.dayTempDetail.tempMin}}
-        <v-icon id="sunny" size="35">mdi-weather-sunset-up</v-icon>
-        <div>{{sunRiseTime}}</div>
-        <v-icon size="35">mdi-weather-sunset-down</v-icon>
-        <div>{{sunSetTime}}</div>
+      <Loading v-if="isLoading"></Loading>
+      <div v-if="!isLoading">
+        <h3>{{city}} - {{Time}}</h3>
+        <div v-if="weatherDetails !== null">
+          {{weatherDetails.currentWeather.weather[0].description}}
+          <div class="temperature-details">
+            <v-row>
+              <v-col
+                cols="7"
+                class="mp-0"
+              >Temperature: {{weatherDetails.currentWeather.dayTempDetail.temp}}</v-col>
+              <v-col cols="5" class="mp-0">
+                <div class="mp-0">High: {{weatherDetails.currentWeather.dayTempDetail.tempMax}}</div>
+                <div class="mp-0">Low: {{weatherDetails.currentWeather.dayTempDetail.tempMin}}</div>
+              </v-col>
+            </v-row>
+          </div>
+          <v-icon id="sunny" size="35">mdi-weather-sunset-up</v-icon>
+          <div>{{sunRiseTime}}</div>
+          <v-icon size="35">mdi-weather-sunset-down</v-icon>
+          <div>{{sunSetTime}}</div>
+        </div>
       </div>
     </div>
 
@@ -35,6 +48,7 @@ export default {
       city: "Adelaide",
       weatherDetails: null,
       celcius: true,
+      isLoading: true,
     };
   },
   created() {
@@ -58,9 +72,9 @@ export default {
       }
       return undefined;
     },
-    Time: function() {
+    Time: function () {
       return this.$helpers.getTime(new Date());
-    }
+    },
   },
   methods: {
     async getWeather() {
@@ -68,7 +82,7 @@ export default {
         "http://localhost:5000/api/weather/GetWeather?city=" + this.city
       );
       this.weatherDetails = message;
-      console.dir(this.weatherDetails);
+      this.isLoading = false;
     },
   },
 };
@@ -77,5 +91,8 @@ export default {
 <style lang="scss" scoped>
 #sunny {
   color: yellow;
+}
+.temperature-details {
+  color: #878787 !important;
 }
 </style>

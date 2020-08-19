@@ -1,6 +1,10 @@
 <template>
   <client-only>
     <vue-draggable-resizable
+      class="drag-container"
+      :is-conflict-check="true"
+      :snap="true"
+      :snap-tolerance="40"
       :w="container.w"
       :h="container.h"
       :x="container.x"
@@ -12,9 +16,10 @@
       :parent="true"
       :disable-user-select="false"
     >
-      <p>
-        <component v-bind:is=control />
-      </p>
+      <v-btn color="error" class="close" v-if="editMode" @click="deleteContainer">X</v-btn>
+      <div class="component-content">
+        <component v-bind:is="control" />
+      </div>
     </vue-draggable-resizable>
   </client-only>
 </template>
@@ -22,13 +27,17 @@
 <script>
 import { mapState, mapActions, mapGetters } from "vuex";
 import Weather from "./Weather";
-import Stocks from "./Stocks";
+import Financials from "./Financials";
+import Search from "./Search";
+import News from "./News";
 
 export default {
   props: ["sizeLoc", "control"],
   components: {
     Weather,
-    Stocks
+    Financials,
+    Search,
+    News
   },
   mounted() {
     this.container = this.sizeLoc;
@@ -48,6 +57,7 @@ export default {
   },
   computed: {
     ...mapGetters("activeContainers", ["resizableContainers"]),
+    ...mapGetters(["editMode"]),
   },
   methods: {
     onResize: function (x, y, w, h) {
@@ -84,7 +94,7 @@ export default {
       for (var i = 0; i < containers.length; i++) {
         var container = containers[i];
         if (this.inRange(container, x, y)) {
-          console.dir("hello");
+          console.dir("Dragged In");
         }
       }
     },
@@ -107,8 +117,40 @@ export default {
         return v.toString(16);
       });
     },
+    deleteContainer() {
+      // destroy the vue listeners, etc
+      this.removeContainer(this.id);
+
+      this.$destroy();
+
+      // remove the element from the DOM
+      this.$el.parentNode.removeChild(this.$el);
+    },
     ...mapActions("activeContainers", ["addContainer"]),
     ...mapActions("activeContainers", ["updateContainer"]),
+    ...mapActions("activeContainers", ["removeContainer"]),
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.close {
+   position: absolute;
+   z-index:10;
+   right: 0;
+   top: 0;
+}
+.drag-container {
+  border: 1px solid black;
+}
+.component-content {
+  position: relative;
+  display: flex;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+  right: 0px;
+  top: 0;
+}
+
+</style>
